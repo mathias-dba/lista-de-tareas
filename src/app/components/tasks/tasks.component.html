@@ -1,0 +1,28 @@
+<div class="header centrar">
+    <h1 class="titulo fuente">Lista de tareas</h1>
+</div>
+<div class="tarea centrar">    
+    <form (submit)="anadirTarea()">
+        <input
+            type="text"
+            name="ingresarTarea"
+            placeholder="Agregar una tarea"
+            class="tarea-input fuente"
+            [(ngModel)]="ingresarTarea"
+        />
+        <input
+            type="submit"
+            value="Agregar"
+            class="tarea-submit fuente"
+        />
+    </form>
+    
+</div>
+
+<div class="centrar">
+    <ul *ngFor="let task of tasks; let i = index;" class="fuente tarea {{ task.task_completa ? 'terminada' : '' }}">
+        
+        <li class="content fuente list" (click)="marcarTerminada(i)">{{ task.task_texto }}</li>
+        <button (click)="borrarTarea(i)">Borrar</button>
+    </ul>
+</div>
